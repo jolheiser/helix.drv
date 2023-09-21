@@ -28,7 +28,7 @@
 
           mkdir .helix
           cat << EOF > .helix/languages.toml
-          use-grammars = { only = ["templ"] }
+          use-grammars = { only = ["${grammar.name}"] }
           [[grammar]]
           name = "${grammar.name}"
           source = { git = "${grammar.url}", rev = "${grammar.rev}" }
