@@ -152,7 +152,8 @@
       {
         name = "go";
         formatter = {
-          command = "${gofumpt}/bin/gofumpt";
+          command = "sh";
+          args = ["-c" "set -o pipefail; ${gotools}/bin/goimports | ${gofumpt}/bin/gofumpt"];
         };
       }
       {
