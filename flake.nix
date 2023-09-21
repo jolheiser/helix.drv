@@ -54,6 +54,7 @@
         artifact = buildGrammar grammar;
       })
       config.grammars;
+    ignoreFile = pkgs.writeText "ignore" (builtins.concatStringsSep "\n" config.ignore);
     configFile = pkgs.writeText "config.toml" (builtins.readFile (tomlFormat.generate "helix-config" config.settings));
     languageFile = pkgs.writeText "languages.toml" (builtins.readFile (tomlFormat.generate "helix-languages" config.languages));
     themeFiles =
@@ -94,6 +95,9 @@
         ln -s ${configFile} $out/home/helix/config.toml
         ln -s ${languageFile} $out/home/helix/languages.toml
         ${builtins.concatStringsSep "\n" themeLinks}
+
+        mkdir -p $out/home/git
+        ln -s ${ignoreFile} $out/home/git/ignore
 
         makeWrapper ${pkgs.helix}/bin/.hx-wrapped $out/bin/hx --set HELIX_RUNTIME $out/lib/runtime --set XDG_CONFIG_HOME $out/home
       '';
