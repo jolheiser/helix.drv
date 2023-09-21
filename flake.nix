@@ -69,7 +69,7 @@
     queryLinks = builtins.map (grammar: "ln -s ${grammar.artifact}/queries $out/lib/runtime/queries/${grammar.name}") builtGrammars;
   in {
     packages.x86_64-linux.default =
-      pkgs.runCommand "jolheiser-helix" {
+      pkgs.runCommand "hx" {
         buildInputs = [pkgs.makeWrapper];
       } ''
         mkdir $out
