@@ -174,6 +174,7 @@
       {
         name = "nix";
         auto-format = true;
+        config.nil.nix.flake.autoEvalInputs = true;
         formatter = {
           command = "${alejandra}/bin/alejandra";
           args = ["-qq"];
