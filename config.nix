@@ -1,5 +1,5 @@
 {pkgs ? import <nixpkgs> {}}: {
-  ignore = [".idea/" "result" "node_modules/"];
+  ignore = [".idea/" "result" "node_modules/" "dist/"];
   settings = {
     theme = "catppuccin_mocha_transparent";
     editor = {
