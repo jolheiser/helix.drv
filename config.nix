@@ -197,6 +197,17 @@
           args = ["fmt"];
         };
       }
+      {
+        name = "typst";
+        auto-format = true;
+        scope = "source.typst";
+        injection-regex = "typst";
+        file-types = ["typ"];
+        roots = [];
+        comment-token = "//";
+        language-server.command = "${typst-lsp}/bin/typst-lsp";
+        formatter.command = "${typst-fmt}/bin/typstfmt";
+      }
     ];
   };
   themes = {
@@ -224,6 +235,13 @@
       rev = "9f63037ad08a58050d0582ef1ae0009bd0fbf2f1";
       sha256 = "sha256-AGZm2D8rW08gMyZ8dSZyAgqgyl/lKiZxBOFDPX0LY4I=";
       queries = "queries/templ";
+    }
+    {
+      name = "typst";
+      url = "https://github.com/uben0/tree-sitter-typst";
+      rev = "791cac478226e3e78809b67ff856010bde709594";
+      sha256 = "sha256-YI+EyLKvw1qg122aH1UCggTQtDT8TioSau6GGRwWktc=";
+      queries = "queries";
     }
   ];
 }

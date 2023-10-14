@@ -23,6 +23,7 @@
         version = grammar.rev;
         buildInputs = [pkgs.helix pkgs.git];
         src = source;
+        dontInstall = true;
         buildPhase = ''
           runHook preBuild
 
