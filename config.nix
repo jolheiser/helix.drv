@@ -1,4 +1,29 @@
-{pkgs ? import <nixpkgs> {}}: {
+{pkgs ? import <nixpkgs> {}}: let
+  templ = pkgs.buildGoModule rec {
+    pname = "templ";
+    version = "0.2.334";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "a-h";
+      repo = "templ";
+      rev = "v${version}";
+      sha256 = "sha256-liELstdoh0/KaOY8TnjCmTgp2CYWk9rZnMuK1RUb3OM=";
+    };
+
+    vendorSha256 = "sha256-7QYF8BvLpTcDstkLWxR0BgBP0NUlJ20IqW/nNqMSBn4=";
+
+    ldflags = ["-s" "-w" "-X=github.com/a-h/templ.Version=${version}"];
+
+    subPackages = ["cmd/templ"];
+
+    meta = with pkgs.lib; {
+      description = "A language for writing HTML user interfaces in Go. ";
+      homepage = "https://github.com/a-h/templ";
+      license = licenses.mit;
+      mainProgram = "templ";
+    };
+  };
+in {
   ignore = [".idea/" "result" "node_modules/" "dist/"];
   settings = {
     theme = "catppuccin_mocha_transparent";
@@ -174,7 +199,6 @@
       {
         name = "nix";
         auto-format = true;
-        config.nil.nix.flake.autoEvalInputs = true;
         formatter = {
           command = "${alejandra}/bin/alejandra";
           args = ["-qq"];
@@ -183,17 +207,8 @@
       {
         name = "templ";
         auto-format = true;
-        scope = "source.templ";
-        injection-regex = "templ";
-        file-types = ["templ"];
-        roots = ["go.mod"];
-        comment-token = "//";
-        language-server = {
-          command = "templ";
-          args = ["lsp"];
-        };
         formatter = {
-          command = "templ";
+          command = "${templ}/bin/templ";
           args = ["fmt"];
         };
       }
@@ -205,10 +220,14 @@
         file-types = ["typ"];
         roots = [];
         comment-token = "//";
-        language-server.command = "${typst-lsp}/bin/typst-lsp";
         formatter.command = "${typst-fmt}/bin/typstfmt";
+        language-servers = ["typst"];
       }
     ];
+    language-server = {
+      typst.command = "${typst-lsp}/bin/typst-lsp";
+      nil.config.nil.nix.flake.autoEvalInputs = true;
+    };
   };
   themes = {
     catppuccin_frappe_transparent = {
@@ -229,13 +248,6 @@
     };
   };
   grammars = [
-    {
-      name = "templ";
-      url = "https://github.com/vrischmann/tree-sitter-templ";
-      rev = "9f63037ad08a58050d0582ef1ae0009bd0fbf2f1";
-      sha256 = "sha256-AGZm2D8rW08gMyZ8dSZyAgqgyl/lKiZxBOFDPX0LY4I=";
-      queries = "queries/templ";
-    }
     {
       name = "typst";
       url = "https://github.com/uben0/tree-sitter-typst";
