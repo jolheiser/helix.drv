@@ -8,7 +8,7 @@
 My helix setup, runnable via:
 
 ```sh
-nix run git+https://git.jojodev.com/jolheiser/helix.drv
+nix run git+https://git.jolheiser.com/helix.drv
 ```
 
 ## License
