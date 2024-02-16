@@ -1,29 +1,4 @@
-{pkgs ? import <nixpkgs> {}}: let
-  templ = pkgs.buildGoModule rec {
-    pname = "templ";
-    version = "0.2.334";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "a-h";
-      repo = "templ";
-      rev = "v${version}";
-      sha256 = "sha256-liELstdoh0/KaOY8TnjCmTgp2CYWk9rZnMuK1RUb3OM=";
-    };
-
-    vendorSha256 = "sha256-7QYF8BvLpTcDstkLWxR0BgBP0NUlJ20IqW/nNqMSBn4=";
-
-    ldflags = ["-s" "-w" "-X=github.com/a-h/templ.Version=${version}"];
-
-    subPackages = ["cmd/templ"];
-
-    meta = with pkgs.lib; {
-      description = "A language for writing HTML user interfaces in Go. ";
-      homepage = "https://github.com/a-h/templ";
-      license = licenses.mit;
-      mainProgram = "templ";
-    };
-  };
-in {
+{pkgs ? import <nixpkgs> {}}: {
   ignore = [".idea/" "result" "node_modules/" "dist/"];
   settings = {
     theme = "catppuccin_mocha_transparent";
@@ -37,12 +12,12 @@ in {
         normal = "block";
         select = "underline";
       };
-      file-picker = {hidden = false;};
+      file-picker.hidden = false;
       indent-guides = {
         render = true;
         skip-levels = 1;
       };
-      soft-wrap = {enable = true;};
+      soft-wrap.enable = true;
       statusline = {
         right = [
           "version-control"
@@ -52,7 +27,7 @@ in {
           "file-encoding"
         ];
       };
-      lsp = {display-messages = true;};
+      lsp.display-messages = true;
     };
     keys = {
       normal = {
@@ -179,13 +154,6 @@ in {
         formatter = {
           command = "sh";
           args = ["-c" "set -o pipefail; ${gotools}/bin/goimports | ${gofumpt}/bin/gofumpt"];
-        };
-      }
-      {
-        name = "lua";
-        formatter = with nodePackages; {
-          command = "${lua-fmt}/bin/luafmt";
-          args = ["--stdin"];
         };
       }
       {
