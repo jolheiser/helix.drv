@@ -195,6 +195,10 @@
     language-server = {
       typst.command = "${typst-lsp}/bin/typst-lsp";
       nil.config.nil.nix.flake.autoEvalInputs = true;
+      gpt = {
+        command = "${helix-gpt}";
+        args = ["--handler=codeium"];
+      };
     };
   };
   themes = {
