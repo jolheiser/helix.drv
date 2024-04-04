@@ -183,17 +183,10 @@
       {
         name = "typst";
         auto-format = true;
-        scope = "source.typst";
-        injection-regex = "typst";
-        file-types = ["typ"];
-        roots = [];
-        comment-token = "//";
         formatter.command = "${typst-fmt}/bin/typstfmt";
-        language-servers = ["typst"];
       }
     ];
     language-server = {
-      typst.command = "${typst-lsp}/bin/typst-lsp";
       nil.config.nil.nix.flake.autoEvalInputs = true;
       gpt = {
         command = "${helix-gpt}";
@@ -220,12 +213,5 @@
     };
   };
   grammars = [
-    {
-      name = "typst";
-      url = "https://github.com/uben0/tree-sitter-typst";
-      rev = "791cac478226e3e78809b67ff856010bde709594";
-      sha256 = "sha256-YI+EyLKvw1qg122aH1UCggTQtDT8TioSau6GGRwWktc=";
-      queries = "queries";
-    }
   ];
 }
