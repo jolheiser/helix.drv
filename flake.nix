@@ -100,7 +100,7 @@
         mkdir -p $out/home/git
         ln -s ${ignoreFile} $out/home/git/ignore
 
-        makeWrapper ${pkgs.helix}/bin/.hx-wrapped $out/bin/hx --set HELIX_RUNTIME $out/lib/runtime --set XDG_CONFIG_HOME $out/home
+        makeWrapper ${pkgs.helix}/bin/hx $out/bin/hx --set HELIX_RUNTIME $out/lib/runtime --set XDG_CONFIG_HOME $out/home
       '';
   };
 }
