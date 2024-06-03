@@ -185,6 +185,14 @@
         auto-format = true;
         formatter.command = "${typst-fmt}/bin/typstfmt";
       }
+      {
+        name = "dhall";
+        auto-format = true;
+        formatter = {
+          command = "${dhall}/bin/dhall";
+          args = ["format"];
+        };
+      }
     ];
     language-server = {
       nil.config.nil.nix.flake.autoEvalInputs = true;
