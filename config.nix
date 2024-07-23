@@ -193,6 +193,14 @@
           args = ["format"];
         };
       }
+      {
+        name = "jsonnet";
+        auto-format = true;
+        formatter = {
+          command = "${jsonnet}/bin/jsonnetfmt";
+          args = ["-"];
+        };
+      }
     ];
     language-server = {
       nil.config.nil.nix.flake.autoEvalInputs = true;
