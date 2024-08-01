@@ -168,8 +168,8 @@
         name = "nix";
         auto-format = true;
         formatter = {
-          command = "${alejandra}/bin/alejandra";
-          args = ["-qq"];
+          command = "${nixfmt-rfc-style}/bin/nixfmt";
+          args = ["-q"];
         };
       }
       {
