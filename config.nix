@@ -1,5 +1,13 @@
-{pkgs ? import <nixpkgs> {}}: {
-  ignore = [".idea/" "result" "node_modules/" "dist/"];
+{
+  pkgs ? import <nixpkgs> { },
+}:
+{
+  ignore = [
+    ".idea/"
+    "result"
+    "node_modules/"
+    "dist/"
+  ];
   settings = {
     theme = "catppuccin_mocha_transparent";
     editor = {
@@ -43,33 +51,61 @@
         S-right = "goto_next_buffer";
         S-left = "goto_previous_buffer";
         C-b = ":buffer-close";
-        C-s = ["select_all" "select_regex"];
+        C-s = [
+          "select_all"
+          "select_regex"
+        ];
 
         C-j = "shrink_selection";
         C-k = "expand_selection";
         C-l = "select_next_sibling";
         C-a = "select_all";
-        C-u = ["half_page_up" "align_view_center"];
-        C-d = ["half_page_down" "align_view_center"];
+        C-u = [
+          "half_page_up"
+          "align_view_center"
+        ];
+        C-d = [
+          "half_page_down"
+          "align_view_center"
+        ];
 
-        "{" = ["goto_prev_paragraph" "collapse_selection"];
-        "}" = ["goto_next_paragraph" "collapse_selection"];
+        "{" = [
+          "goto_prev_paragraph"
+          "collapse_selection"
+        ];
+        "}" = [
+          "goto_next_paragraph"
+          "collapse_selection"
+        ];
         "0" = "goto_line_start";
         "$" = "goto_line_end";
         "^" = "goto_first_nonwhitespace";
         G = "goto_file_end";
         "%" = "match_brackets";
-        V = ["select_mode" "extend_to_line_bounds"];
-        C = ["collapse_selection" "extend_to_line_end" "change_selection"];
-        D = ["extend_to_line_end" "delete_selection"];
+        V = [
+          "select_mode"
+          "extend_to_line_bounds"
+        ];
+        C = [
+          "collapse_selection"
+          "extend_to_line_end"
+          "change_selection"
+        ];
+        D = [
+          "extend_to_line_end"
+          "delete_selection"
+        ];
         S = "surround_add";
 
         d = {
-          d = ["extend_to_line_bounds" "delete_selection"];
-          t = ["extend_till_char"];
-          s = ["surround_delete"];
-          i = ["select_textobject_inner"];
-          a = ["select_textobject_around"];
+          d = [
+            "extend_to_line_bounds"
+            "delete_selection"
+          ];
+          t = [ "extend_till_char" ];
+          s = [ "surround_delete" ];
+          i = [ "select_textobject_inner" ];
+          a = [ "select_textobject_around" ];
         };
 
         x = "delete_selection";
@@ -88,16 +124,40 @@
           "collapse_selection"
         ];
 
-        w = ["move_next_word_start" "move_char_right" "collapse_selection"];
-        e = ["move_next_word_end" "collapse_selection"];
-        b = ["move_prev_word_start" "collapse_selection"];
+        w = [
+          "move_next_word_start"
+          "move_char_right"
+          "collapse_selection"
+        ];
+        e = [
+          "move_next_word_end"
+          "collapse_selection"
+        ];
+        b = [
+          "move_prev_word_start"
+          "collapse_selection"
+        ];
 
-        i = ["insert_mode" "collapse_selection"];
-        a = ["append_mode" "collapse_selection"];
+        i = [
+          "insert_mode"
+          "collapse_selection"
+        ];
+        a = [
+          "append_mode"
+          "collapse_selection"
+        ];
 
-        esc = ["collapse_selection" "keep_primary_selection"];
+        esc = [
+          "collapse_selection"
+          "keep_primary_selection"
+        ];
       };
-      insert = {esc = ["collapse_selection" "normal_mode"];};
+      insert = {
+        esc = [
+          "collapse_selection"
+          "normal_mode"
+        ];
+      };
       select = {
         space = {
           j = {
@@ -105,28 +165,60 @@
             c = ":pipe jq -c";
           };
         };
-        "{" = ["extend_to_line_bounds" "goto_prev_paragraph"];
-        "}" = ["extend_to_line_bounds" "goto_next_paragraph"];
+        "{" = [
+          "extend_to_line_bounds"
+          "goto_prev_paragraph"
+        ];
+        "}" = [
+          "extend_to_line_bounds"
+          "goto_next_paragraph"
+        ];
         "0" = "goto_line_start";
         "$" = "goto_line_end";
         "^" = "goto_first_nonwhitespace";
         G = "goto_file_end";
-        D = ["extend_to_line_bounds" "delete_selection" "normal_mode"];
-        C = ["goto_line_start" "extend_to_line_bounds" "change_selection"];
+        D = [
+          "extend_to_line_bounds"
+          "delete_selection"
+          "normal_mode"
+        ];
+        C = [
+          "goto_line_start"
+          "extend_to_line_bounds"
+          "change_selection"
+        ];
         "%" = "match_brackets";
         S = "surround_add";
 
         i = "select_textobject_inner";
         a = "select_textobject_around";
 
-        tab = ["insert_mode" "collapse_selection"];
-        C-a = ["append_mode" "collapse_selection"];
+        tab = [
+          "insert_mode"
+          "collapse_selection"
+        ];
+        C-a = [
+          "append_mode"
+          "collapse_selection"
+        ];
 
-        k = ["extend_line_up" "extend_to_line_bounds"];
-        j = ["extend_line_down" "extend_to_line_bounds"];
+        k = [
+          "extend_line_up"
+          "extend_to_line_bounds"
+        ];
+        j = [
+          "extend_line_down"
+          "extend_to_line_bounds"
+        ];
 
-        d = ["yank_main_selection_to_clipboard" "delete_selection"];
-        x = ["yank_main_selection_to_clipboard" "delete_selection"];
+        d = [
+          "yank_main_selection_to_clipboard"
+          "delete_selection"
+        ];
+        x = [
+          "yank_main_selection_to_clipboard"
+          "delete_selection"
+        ];
         y = [
           "yank_main_selection_to_clipboard"
           "normal_mode"
@@ -143,7 +235,11 @@
         p = "replace_selections_with_clipboard";
         P = "paste_clipboard_before";
 
-        esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
+        esc = [
+          "collapse_selection"
+          "keep_primary_selection"
+          "normal_mode"
+        ];
       };
     };
   };
@@ -153,7 +249,10 @@
         name = "go";
         formatter = {
           command = "sh";
-          args = ["-c" "set -o pipefail; ${gotools}/bin/goimports | ${gofumpt}/bin/gofumpt"];
+          args = [
+            "-c"
+            "set -o pipefail; ${gotools}/bin/goimports | ${gofumpt}/bin/gofumpt"
+          ];
         };
       }
       {
@@ -161,7 +260,10 @@
         auto-format = true;
         formatter = with python311Packages; {
           command = "${black}/bin/black";
-          args = ["--quiet" "-"];
+          args = [
+            "--quiet"
+            "-"
+          ];
         };
       }
       {
@@ -169,7 +271,7 @@
         auto-format = true;
         formatter = {
           command = "${nixfmt-rfc-style}/bin/nixfmt";
-          args = ["-q"];
+          args = [ "-q" ];
         };
       }
       {
@@ -177,7 +279,7 @@
         auto-format = true;
         formatter = {
           command = "${templ}/bin/templ";
-          args = ["fmt"];
+          args = [ "fmt" ];
         };
       }
       {
@@ -190,7 +292,7 @@
         auto-format = true;
         formatter = {
           command = "${dhall}/bin/dhall";
-          args = ["format"];
+          args = [ "format" ];
         };
       }
       {
@@ -198,36 +300,49 @@
         auto-format = true;
         formatter = {
           command = "${jsonnet}/bin/jsonnetfmt";
-          args = ["-"];
+          args = [ "-" ];
         };
+      }
+      {
+        name = "cooklang";
+        scope = "source.cook";
+        injection-regex = "cook";
+        file-types = [ "cook" ];
       }
     ];
     language-server = {
       nil.config.nil.nix.flake.autoEvalInputs = true;
       gpt = {
         command = "${helix-gpt}";
-        args = ["--handler=codeium"];
+        args = [ "--handler=codeium" ];
       };
     };
   };
   themes = {
     catppuccin_frappe_transparent = {
       inherits = "catppuccin_frappe";
-      "ui.background" = {};
+      "ui.background" = { };
     };
     catppuccin_latte_transparent = {
       inherits = "catppuccin_latte";
-      "ui.background" = {};
+      "ui.background" = { };
     };
     catppuccin_macchiato_transparent = {
       inherits = "catppuccin_macchiato";
-      "ui.background" = {};
+      "ui.background" = { };
     };
     catppuccin_mocha_transparent = {
       inherits = "catppuccin_mocha";
-      "ui.background" = {};
+      "ui.background" = { };
     };
   };
   grammars = [
+    {
+      name = "cooklang";
+      url = "https://github.com/jolheiser/tree-sitter-cooklang";
+      rev = "a87b94729c0e4276a3e7b9fdccf497c268a2e1b8";
+      sha256 = "sha256-j6WD1+WVTLlq0x0WkFWWR8JHYk2jObSRDNEz6SUWovw=";
+      queries = "queries";
+    }
   ];
 }
