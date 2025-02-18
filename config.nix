@@ -256,43 +256,11 @@
         };
       }
       {
-        name = "python";
-        auto-format = true;
-        formatter = with python311Packages; {
-          command = "${black}/bin/black";
-          args = [
-            "--quiet"
-            "-"
-          ];
-        };
-      }
-      {
         name = "nix";
         auto-format = true;
         formatter = {
           command = "${nixfmt-rfc-style}/bin/nixfmt";
           args = [ "-q" ];
-        };
-      }
-      {
-        name = "templ";
-        auto-format = true;
-        formatter = {
-          command = "${templ}/bin/templ";
-          args = [ "fmt" ];
-        };
-      }
-      {
-        name = "typst";
-        auto-format = true;
-        formatter.command = "${typst-fmt}/bin/typstfmt";
-      }
-      {
-        name = "dhall";
-        auto-format = true;
-        formatter = {
-          command = "${dhall}/bin/dhall";
-          args = [ "format" ];
         };
       }
       {
@@ -303,19 +271,9 @@
           args = [ "-" ];
         };
       }
-      {
-        name = "cooklang";
-        scope = "source.cook";
-        injection-regex = "cook";
-        file-types = [ "cook" ];
-      }
     ];
     language-server = {
       nil.config.nil.nix.flake.autoEvalInputs = true;
-      gpt = {
-        command = "${helix-gpt}";
-        args = [ "--handler=codeium" ];
-      };
     };
   };
   themes = {
@@ -336,13 +294,5 @@
       "ui.background" = { };
     };
   };
-  grammars = [
-    {
-      name = "cooklang";
-      url = "https://github.com/jolheiser/tree-sitter-cooklang";
-      rev = "a87b94729c0e4276a3e7b9fdccf497c268a2e1b8";
-      sha256 = "sha256-j6WD1+WVTLlq0x0WkFWWR8JHYk2jObSRDNEz6SUWovw=";
-      queries = "queries";
-    }
-  ];
+  grammars = [ ];
 }
