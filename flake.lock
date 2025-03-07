@@ -1,46 +1,24 @@
 {
   "nodes": {
-    "jolheiser": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1739904102,
-        "narHash": "sha256-Oh+ckGaUrnH5mMCsPvU9XViSAIfbigW7H0Rq/ZbbhlI=",
-        "ref": "refs/heads/main",
-        "rev": "0abadd849d3d36ca87fda7ea9ed637f25a0e9dae",
-        "revCount": 3,
-        "type": "git",
-        "url": "https://git.jolheiser.com/nixpkgs.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.jolheiser.com/nixpkgs.git"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1739736696,
-        "narHash": "sha256-zON2GNBkzsIyALlOCFiEBcIjI4w38GYOb+P+R4S8Jsw=",
+        "lastModified": 1741037377,
+        "narHash": "sha256-SvtvVKHaUX4Owb+PasySwZsoc5VUeTf1px34BByiOxw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d74a2335ac9c133d6bbec9fc98d91a77f1604c1f",
+        "rev": "02032da4af073d0f6110540c8677f16d4be0117f",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
-        "jolheiser": "jolheiser",
-        "nixpkgs": [
-          "jolheiser",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       }
     }
   },

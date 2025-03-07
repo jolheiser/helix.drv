@@ -1,9 +1,6 @@
 {
   description = "jolheiser helix derivation";
-  inputs = {
-    jolheiser.url = "git+https://git.jolheiser.com/nixpkgs.git";
-    nixpkgs.follows = "jolheiser/nixpkgs";
-  };
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   outputs =
     {
       nixpkgs,
