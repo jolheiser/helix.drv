@@ -35,6 +35,7 @@
           "file-encoding"
         ];
       };
+      inline-diagnostics.cursor-line = "hint";
       lsp.display-messages = true;
     };
     keys = {
@@ -44,6 +45,7 @@
           Q = ":quit!";
           w = ":write";
           W = ":write!";
+          o = "file_picker_in_current_buffer_directory";
         };
         C-c = ":config-open";
         C-r = ":config-reload";
