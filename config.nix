@@ -35,7 +35,8 @@
           "file-encoding"
         ];
       };
-      inline-diagnostics.cursor-line = "hint";
+      end-of-line-diagnostics = "hint";
+      inline-diagnostics.cursor-line = "error";
       lsp.display-messages = true;
     };
     keys = {
