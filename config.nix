@@ -270,7 +270,7 @@
         name = "jsonnet";
         auto-format = true;
         formatter = {
-          command = "${lib.getExe' jsonnet "jsonnet"}";
+          command = "${lib.getExe' jsonnet "jsonnetfmt"}";
           args = [ "-" ];
         };
       }
