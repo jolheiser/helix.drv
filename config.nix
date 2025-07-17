@@ -163,9 +163,9 @@
       };
       select = {
         space = {
-          j = {
-            e = ":pipe jq";
-            c = ":pipe jq -c";
+          j = with pkgs; {
+            e = ":pipe ${lib.getExe jq}";
+            c = ":pipe ${lib.getExe jq} -c";
           };
         };
         "{" = [
