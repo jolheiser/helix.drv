@@ -11,6 +11,10 @@ My helix setup, runnable via:
 nix run git+https://git.jolheiser.com/helix.drv
 ```
 
+To add color LSP support to any given language, extend the LSPs configured for that language and add `colors`.
+
+See [this server's configuration](.helix/languages.toml) for an example.
+
 ## License
 
 [MIT](LICENSE)

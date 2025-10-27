@@ -62,5 +62,6 @@ with pkgs;
         };
       };
     };
+    colors.command = "${lib.getExe uwu-colors}";
   };
 }
