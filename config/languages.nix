@@ -63,5 +63,9 @@ with pkgs;
       };
     };
     colors.command = "${lib.getExe uwu-colors}";
+    grammar = {
+      command = "${lib.getExe harper}";
+      args = [ "--stdio" ];
+    };
   };
 }

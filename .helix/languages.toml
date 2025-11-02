@@ -1,3 +1,7 @@
 [[language]]
 name = "nix"
 language-servers = ["nil", "colors"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "grammar"]
