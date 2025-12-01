@@ -40,27 +40,23 @@ with pkgs;
         ];
         command = "${lib.getExe ruff}";
       };
-      language-servers = [ "pylsp" ];
     }
   ];
   language-server = {
     nil.config.nil.nix.flake.autoEvalInputs = true;
-    pylsp.config.pylsp = {
-      plugins = {
-        flake8.enabled = false;
-        mypy = {
-          dmypy = true;
-          enabled = true;
-          report_progress = true;
-        };
-        pycodestyle.enabled = false;
-        pyflakes.enabled = false;
-        ruff = {
-          enabled = true;
-          extendSelect = [ "I" ];
-          format = [ "I" ];
-        };
+    pylsp.config.pylsp.plugins = {
+      flake8.enabled = false;
+      pylsp_mypy = {
+        enabled = true;
+        live_mode = true;
       };
+      rope_autoimport.enabled = true;
+      pycodestyle.enabled = false;
+      pyflakes.enabled = false;
+    };
+    ruff = {
+      command = "${lib.getExe ruff}";
+      args = [ "server" ];
     };
     colors.command = "${lib.getExe uwu-colors}";
     grammar = {
