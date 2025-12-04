@@ -30,12 +30,14 @@ with pkgs;
     }
     {
       name = "python";
+      language-servers = [
+        "ruff"
+        "ty"
+      ];
       auto-format = true;
       formatter = {
         args = [
           "format"
-          "--stdin-filename"
-          "file.py"
           "-"
         ];
         command = "${lib.getExe ruff}";
@@ -44,18 +46,12 @@ with pkgs;
   ];
   language-server = {
     nil.config.nil.nix.flake.autoEvalInputs = true;
-    pylsp.config.pylsp.plugins = {
-      flake8.enabled = false;
-      pylsp_mypy = {
-        enabled = true;
-        live_mode = true;
-      };
-      rope_autoimport.enabled = true;
-      pycodestyle.enabled = false;
-      pyflakes.enabled = false;
-    };
     ruff = {
       command = "${lib.getExe ruff}";
+      args = [ "server" ];
+    };
+    ty = {
+      command = "${lib.getExe ty}";
       args = [ "server" ];
     };
     colors.command = "${lib.getExe uwu-colors}";
