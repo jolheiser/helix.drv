@@ -3,7 +3,7 @@
 }:
 let
   tomlFormat = pkgs.formats.toml { };
-  config = import ./config { pkgs = pkgs; };
+  config = import ./config { inherit pkgs; };
   buildGrammar =
     grammar:
     let
