@@ -1,0 +1,13 @@
+steps:
+  - name: nix-build
+    image: nixos/nix:latest
+    commands:
+      - nix build
+
+  - name: cachix-push
+    image: nixpkgs/cachix:latest
+    commands:
+      - cachix push jolheiser result/
+    environment:
+      CACHIX_AUTH_TOKEN:
+        from_secret: cachix_auth_token
